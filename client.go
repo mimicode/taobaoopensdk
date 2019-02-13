@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"taobaoopensdk/utils"
 	"time"
 )
 
@@ -21,6 +22,7 @@ type DefaultRequest interface {
 	AddParameter(string, string)
 	GetParameters() url.Values
 	GetApiName() string
+	CheckParameters()
 }
 
 type DefaultResponse interface {
@@ -80,14 +82,14 @@ func (u *TopClient) CreateSign(params url.Values) {
 		}
 	}
 	//排序
-	newParamsKey := SortParamters(newParams)
+	newParamsKey := utils.SortParamters(newParams)
 	//拼装签名字符串
 	signStr := u.AppSecret
 	for _, k := range newParamsKey {
 		signStr += k + newParams.Get(k)
 	}
 	signStr += u.AppSecret
-	sign := strings.ToUpper(Md5(signStr))
+	sign := strings.ToUpper(utils.Md5(signStr))
 	//API输入参数签名结果
 	u.SysParameters.Set("sign", sign)
 }
@@ -147,13 +149,15 @@ func (u *TopClient) Execute(params url.Values) (string, error) {
 	return u.PostRequest(uri)
 }
 func (u *TopClient) Exec(request DefaultRequest, response DefaultResponse) error {
+	//检测参数
+	request.CheckParameters()
+	//API接口名称
 	method := request.GetApiName()
 	if method == "" {
 		panic("API name missing")
 	}
-	//API接口名称
-	//method
 	u.SysParameters.Set("method", method)
+
 	//请求参数
 	params := request.GetParameters()
 	result, err := u.Execute(params)

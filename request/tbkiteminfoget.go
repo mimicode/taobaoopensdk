@@ -2,11 +2,19 @@ package request
 
 import (
 	"net/url"
+	"taobaoopensdk/utils"
 )
 
 //淘宝客商品详情查询（简版） 免费 不需要授权
+// http://open.taobao.com/api.htm?docId=24518&docType=2
 type TbkItemInfoGetRequest struct {
 	Parameters *url.Values //请求参数
+}
+
+//参数检测
+func (tk *TbkItemInfoGetRequest) CheckParameters() {
+	utils.CheckNotNull(tk.Parameters.Get("num_iids"), "num_iids")
+	utils.CheckMaxListSize(tk.Parameters.Get("num_iids"), 40, "num_iids")
 }
 
 //添加请求参数

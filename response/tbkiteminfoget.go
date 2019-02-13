@@ -2,7 +2,7 @@ package response
 
 import "encoding/json"
 
-//
+//淘宝客商品详情查询（简版） 免费 不需要授权
 type TbkItemInfoGetResponse struct {
 	TopResponse
 	TbkItemInfoGetResult TbkItemInfoGetResult `json:"tbk_item_info_get_response"`

@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-func TestTopClient_Exec(t *testing.T) {
+func TestTbkiteminfoget(t *testing.T) {
 
 	appKey := os.Getenv("APPKEY")
 	appSecret := os.Getenv("APPSECRET")
@@ -39,6 +39,40 @@ func TestTopClient_Exec(t *testing.T) {
 				fmt.Println(v.Title)
 			}
 		}
+
+	}
+}
+
+func TestTbkPrivilegeGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkPrivilegeGetRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("site_id", "7418269")
+	getRequest.AddParameter("item_id", "583866215568")
+
+	getRequest.AddParameter("relation_id", "")
+	getRequest.AddParameter("me", "")
+	getRequest.AddParameter("platform", "1")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkPrivilegeGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		tbkPrivilegeGetResponse := getResponse.(*response.TbkPrivilegeGetResponse)
+
+		fmt.Println(tbkPrivilegeGetResponse.TbkPrivilegeGetResult.Result.Data)
 
 	}
 }
