@@ -199,7 +199,67 @@ func TestTbkShopConvert(t *testing.T) {
 	} else {
 		result := getResponse.(*response.TbkShopConvertResponse)
 
-		fmt.Println(result.Body)
+		fmt.Println(result.TbkShopConvertResult.Results)
+
+	}
+}
+
+func TestTbkTpwdConvert(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkTpwdConvertRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("password_content", "(7q8mbttcjzE)")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkTpwdConvertResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkTpwdConvertResponse)
+
+		fmt.Println(result.TbkTpwdConvertResult.Data)
+
+	}
+}
+
+func TestTbkScOrderGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkScOrderGetRequest{}
+	getRequest.AddParameter("fields", "trade_parent_id,trade_id,num_iid,item_title,item_num,price,pay_price,seller_nick,seller_shop_title,commission,commission_rate,unid,create_time,earning_time,tk_status,tk3rd_type,tk3rd_pub_id,order_type,income_rate,pub_share_pre_fee,subsidy_rate,subsidy_type,terminal_type,auction_category,site_id,site_name,adzone_id,adzone_name,alipay_total_price,total_commission_rate,total_commission_fee,subsidy_fee,relation_id,click_time")
+	getRequest.AddParameter("start_time", "2019-02-13 20:50:00")
+	getRequest.AddParameter("span", "600")
+	getRequest.AddParameter("order_query_type", "create_time")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkScOrderGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkScOrderGetResponse)
+
+		fmt.Println(result.TbkScOrderGetResult.Results)
 
 	}
 }
