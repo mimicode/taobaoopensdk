@@ -141,3 +141,65 @@ func TestTbkScActivitylinkToolget(t *testing.T) {
 
 	}
 }
+
+func TestTbkItemConvert(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkItemConvertRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("fields", "num_iid,click_url")
+
+	getRequest.AddParameter("num_iids", "583866215568,578307080718")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkItemConvertResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkItemConvertResponse)
+
+		fmt.Println(result.TbkItemConvertResult.Results.NTbkItem)
+
+	}
+}
+
+func TestTbkShopConvert(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkShopConvertRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("fields", "user_id,click_url")
+
+	getRequest.AddParameter("user_ids", "188124207,383602586")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkShopConvertResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkShopConvertResponse)
+
+		fmt.Println(result.Body)
+
+	}
+}
