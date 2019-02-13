@@ -29,12 +29,12 @@ func TestTbkiteminfoget(t *testing.T) {
 	if err != nil {
 		t.Log(err)
 	} else {
-		tbkItemInfoGetResponse := getResponse.(*response.TbkItemInfoGetResponse)
+		result := getResponse.(*response.TbkItemInfoGetResponse)
 
-		if tbkItemInfoGetResponse.IsError() {
-			fmt.Println(tbkItemInfoGetResponse.Body)
+		if result.IsError() {
+			fmt.Println(result.Body)
 		} else {
-			items := tbkItemInfoGetResponse.TbkItemInfoGetResult.Results.NTbkItem
+			items := result.TbkItemInfoGetResult.Results.NTbkItem
 			for _, v := range items {
 				fmt.Println(v.Title)
 			}
@@ -70,9 +70,74 @@ func TestTbkPrivilegeGet(t *testing.T) {
 	if err != nil {
 		t.Log(err)
 	} else {
-		tbkPrivilegeGetResponse := getResponse.(*response.TbkPrivilegeGetResponse)
+		result := getResponse.(*response.TbkPrivilegeGetResponse)
 
-		fmt.Println(tbkPrivilegeGetResponse.TbkPrivilegeGetResult.Result.Data)
+		fmt.Println(result.TbkPrivilegeGetResult.Result.Data)
+
+	}
+}
+
+func TestTbkScMaterialOptional(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkScMaterialOptionalRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("site_id", "7418269")
+
+	getRequest.AddParameter("q", "女装")
+	getRequest.AddParameter("platform", "1")
+	getRequest.AddParameter("page_no", "1")
+	getRequest.AddParameter("page_size", "1")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkScMaterialOptionalResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkScMaterialOptionalResponse)
+
+		fmt.Println(result.TbkScMaterialOptionalResult)
+
+	}
+}
+
+func TestTbkScActivitylinkToolget(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkScActivitylinkToolgetRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("site_id", "7418269")
+
+	getRequest.AddParameter("promotion_scene_id", "8479247")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkScActivitylinkToolgetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkScActivitylinkToolgetResponse)
+
+		fmt.Println(result.TbkScActivitylinkToolgetResult)
 
 	}
 }
