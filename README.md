@@ -48,3 +48,13 @@ if err != nil {
 
 }
 ```
+
+API support list
+- [taobao.tbk.item.convert( 淘宝客商品链接转换 )](http://open.taobao.com/api.htm?docId=24516&docType=2&scopeId=11653)
+- [taobao.tbk.item.info.get 淘宝客商品详情查询（简版）](http://open.taobao.com/api.htm?docId=24518&docType=2)
+- [taobao.tbk.privilege.get( 单品券高效转链API )](http://open.taobao.com/api.htm?docId=28625&docType=2&scopeId=12403)
+- [taobao.tbk.sc.activitylink.toolget( 淘宝联盟官方活动推广API-工具 )](http://open.taobao.com/api.htm?docId=41921&docType=2&scopeId=15675)
+- [taobao.tbk.sc.material.optional( 通用物料搜索API )](http://open.taobao.com/api.htm?docId=35263&docType=2&scopeId=13991)
+- [taobao.tbk.sc.order.get( 淘宝客订单查询 - 社交 )](http://open.taobao.com/api.htm?docId=38078&docType=2&scopeId=14814)
+- [taobao.tbk.shop.convert( 淘宝客店铺链接转换 )](http://open.taobao.com/api.htm?docId=24523&docType=2&scopeId=11653)
+- [taobao.tbk.tpwd.convert( 淘口令转链 )](http://open.taobao.com/api.htm?docId=32932&docType=2&scopeId=11653)
