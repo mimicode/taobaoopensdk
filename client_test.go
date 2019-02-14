@@ -347,3 +347,31 @@ func TestSellercatsListGet(t *testing.T) {
 
 	}
 }
+
+func TestShopGetbytitle(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.ShopGetbytitleRequest{}
+	getRequest.AddParameter("title", "韩都衣舍旗舰店")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.ShopGetbytitleResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.ShopGetbytitleResponse)
+
+		fmt.Println(result.ShopGetbytitleResult.ResultShop)
+
+	}
+}
