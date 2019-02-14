@@ -579,7 +579,7 @@ func TestTbkItemCouponGet(t *testing.T) {
 	}
 }
 
-func TestTbkitemget(t *testing.T) {
+func TestTbkitemGet(t *testing.T) {
 
 	appKey := os.Getenv("APPKEY")
 	appSecret := os.Getenv("APPSECRET")
@@ -590,9 +590,9 @@ func TestTbkitemget(t *testing.T) {
 
 	//初始化请求接口信息
 	getRequest := &request.TbkItemGetRequest{}
-	getRequest.AddParameter("fields", "num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick")
-	getRequest.AddParameter("q", "男鞋")
-	getRequest.AddParameter("page_size", "2")
+	getRequest.AddParameter("fields", "num_iid")
+	getRequest.AddParameter("q", "连衣裙")
+	getRequest.AddParameter("page_size", "40")
 	//初始化结果类型
 	var getResponse DefaultResponse = &response.TbkItemGetResponse{}
 	//执行请求接口得到结果
@@ -605,4 +605,33 @@ func TestTbkitemget(t *testing.T) {
 		fmt.Println(result.TbkItemGetResult.Results.NTbkItem)
 
 	}
+}
+
+func TestTbkItemRecommendGet(t *testing.T) {
+
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkItemRecommendGetRequest{}
+	getRequest.AddParameter("fields", "num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick")
+	getRequest.AddParameter("num_iid", "562775487987")
+	getRequest.AddParameter("count", "20")
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkItemRecommendGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkItemRecommendGetResponse)
+
+		fmt.Println(result.TbkItemRecommendGetResult.Results.NTbkItem)
+
+	}
+
 }
