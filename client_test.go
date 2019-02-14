@@ -522,3 +522,87 @@ func TestTbkScCouponBrandRecommend(t *testing.T) {
 
 	}
 }
+
+func TestTbkSpreadGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkSpreadGetRequest{}
+	getRequest.AddParameter("requests", `[{"url":"https://uland.taobao.com/coupon/edetail?e=wog6mTjZv%2FIGQASttHIRqT8%2FTgo%2BDKYNn3MtPDDRCxLuFdGM%2Fy8ADJwJ6dLD4BPh4h5828KZV1siM37WwZ3M460TeAL%2BmcF1hLjdYI0pIJBwx7%2FmoMcv1BemP0hpIIPvjDppvlX%2Bob8NlNJBuapvQ2MDg9t1zp0R8pjV3C9qcwRg5t1bGd7ixKOQJ6Ic4SbV&traceId=0b0b40de15501301853222175e&union_lens=lensId:0b1832c2_0b51_168eaf5847e_8589&xId=vJinjnbsDyrka2dVuwvpFpBvPqgdfSmfEm3bA2Jig86yBLgQear0ZghwNkuOsiTtahUYTf5Kq7I6X8iIlkrpeU&activityId=d1204e96d378436cabe64bfebccc6f74"}]`)
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkSpreadGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkSpreadGetResponse)
+
+		fmt.Println(result.TbkSpreadGetResult.Results.TbkSpread)
+
+	}
+}
+
+func TestTbkItemCouponGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkItemCouponGetRequest{}
+	getRequest.AddParameter("pid", "mm_27437251_7418269_24546980")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkItemCouponGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkItemCouponGetResponse)
+
+		fmt.Println(result.TbkItemCouponGetResult.Results.TbkCoupon)
+
+	}
+}
+
+func TestTbkitemget(t *testing.T) {
+
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkItemGetRequest{}
+	getRequest.AddParameter("fields", "num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick")
+	getRequest.AddParameter("q", "男鞋")
+	getRequest.AddParameter("page_size", "2")
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkItemGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkItemGetResponse)
+
+		fmt.Println(result.TbkItemGetResult.Results.NTbkItem)
+
+	}
+}
