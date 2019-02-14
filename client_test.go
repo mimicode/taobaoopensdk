@@ -647,7 +647,7 @@ func TestJuItemsSearch(t *testing.T) {
 
 	//初始化请求接口信息
 	getRequest := &request.JuItemsSearchRequest{}
-	getRequest.AddParameter("param_top_item_query", `{"current_page":1,"page_size":1,"pid":"mm_27437251_7418269_24546980"}`)
+	getRequest.AddParameter("param_top_item_query", `{"current_page":1,"page_size":2,"pid":"mm_27437251_7418269_24546980"}`)
 
 	//初始化结果类型
 	var getResponse DefaultResponse = &response.JuItemsSearchResponse{}
@@ -658,9 +658,255 @@ func TestJuItemsSearch(t *testing.T) {
 	} else {
 		result := getResponse.(*response.JuItemsSearchResponse)
 
-		fmt.Println(result.Body)
+		fmt.Println(result.JuItemsSearchResult.Result)
 
 	}
 
 }
 
+func TestTbkActivitylinkGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkActivitylinkGetRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+
+	getRequest.AddParameter("promotion_scene_id", "8493178")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkActivitylinkGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkActivitylinkGetResponse)
+
+		fmt.Println(result.TbkActivitylinkGetResult)
+
+	}
+}
+
+func TestTbkDgItemCouponGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkDgItemCouponGetRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+
+	getRequest.AddParameter("cat", "16")
+	getRequest.AddParameter("page_size", "2")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkDgItemCouponGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkDgItemCouponGetResponse)
+
+		fmt.Println(result.TbkDgItemCouponGetResult.Results.TbkCoupon)
+
+	}
+}
+
+func TestTbkDgMaterialOptional(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkDgMaterialOptionalRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+
+	getRequest.AddParameter("cat", "16")
+	getRequest.AddParameter("page_size", "2")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkDgMaterialOptionalResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkDgMaterialOptionalResponse)
+
+		fmt.Println(result.TbkDgMaterialOptionalResult.ResultList.MapData)
+
+	}
+}
+
+func TestTbkDgNewuserOrderGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkDgNewuserOrderGetRequest{}
+	getRequest.AddParameter("activity_id", "119013_6")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkDgNewuserOrderGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkDgNewuserOrderGetResponse)
+
+		fmt.Println(result.TbkDgNewuserOrderGetResult.Results.Data.Results.MapData)
+
+	}
+}
+
+func TestTbkDgNewuserOrderSum(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkDgNewuserOrderSumRequest{}
+	getRequest.AddParameter("activity_id", "119013_6")
+	getRequest.AddParameter("page_size", "2")
+	getRequest.AddParameter("page_no", "1")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkDgNewuserOrderSumResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkDgNewuserOrderSumResponse)
+
+		fmt.Println(result.TbkDgNewuserOrderSumResult.Results.Data.Results)
+
+	}
+}
+
+func TestTbkDgOptimusMaterial(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkDgOptimusMaterialRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("material_id", "4093")
+
+	getRequest.AddParameter("page_size", "2")
+	getRequest.AddParameter("page_no", "1")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkDgOptimusMaterialResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkDgOptimusMaterialResponse)
+
+		fmt.Println(result.TbkDgOptimusMaterialResult.ResultList.MapData)
+
+	}
+}
+
+func TestTbkJuTqgGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkJuTqgGetRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("fields", "click_url,pic_url,reserve_price,zk_final_price,total_amount,sold_num,title,category_name,start_time,end_time,num_iid")
+
+	getRequest.AddParameter("start_time", "2019-02-15 07:00:00")
+	getRequest.AddParameter("end_time", "2019-02-15 15:00:00")
+
+	getRequest.AddParameter("page_size", "2")
+	getRequest.AddParameter("page_no", "1")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkJuTqgGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkJuTqgGetResponse)
+
+		fmt.Println(result.TbkJuTqgGetResult.Results.Results)
+
+	}
+}
+
+func TestTbkCouponGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkCouponGetRequest{}
+	getRequest.AddParameter("item_id", "573509331754")
+
+	getRequest.AddParameter("activity_id", "335fa4c30e8a4f5da28596d122b48c28")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkCouponGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkCouponGetResponse)
+
+		fmt.Println(result.TbkCouponGetResult.Data)
+
+	}
+}
