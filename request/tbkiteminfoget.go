@@ -5,8 +5,8 @@ import (
 	"taobaoopensdk/utils"
 )
 
-//淘宝客商品详情查询（简版） 免费 不需要授权
-// http://open.taobao.com/api.htm?docId=24518&docType=2
+//taobao.tbk.item.info.get( 淘宝客商品详情（简版） )
+//http://open.taobao.com/api.htm?docId=24518&docType=2
 type TbkItemInfoGetRequest struct {
 	Parameters *url.Values //请求参数
 }
