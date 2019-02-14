@@ -464,3 +464,61 @@ func TestTbkScPublisherInfoSave(t *testing.T) {
 
 	}
 }
+
+func TestTbkScCouponRealtimeRecommend(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkScCouponRealtimeRecommendRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("site_id", "7418269")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkScCouponRealtimeRecommendResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkScCouponRealtimeRecommendResponse)
+
+		fmt.Println(result.TbkScCouponRealtimeRecommendResult.Results.TbkCoupon)
+
+	}
+}
+
+func TestTbkScCouponBrandRecommend(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.TbkScCouponBrandRecommendRequest{}
+	getRequest.AddParameter("adzone_id", "24546980")
+	getRequest.AddParameter("site_id", "7418269")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkScCouponBrandRecommendResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkScCouponBrandRecommendResponse)
+
+		fmt.Println(result.TbkScCouponBrandRecommendResult.Results.TbkCoupon)
+
+	}
+}
