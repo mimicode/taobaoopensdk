@@ -636,3 +636,31 @@ func TestTbkItemRecommendGet(t *testing.T) {
 
 }
 
+func TestJuItemsSearch(t *testing.T) {
+
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.JuItemsSearchRequest{}
+	getRequest.AddParameter("param_top_item_query", `{"current_page":1,"page_size":1,"pid":"mm_27437251_7418269_24546980"}`)
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.JuItemsSearchResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.JuItemsSearchResponse)
+
+		fmt.Println(result.Body)
+
+	}
+
+}
+
