@@ -263,3 +263,87 @@ func TestTbkScOrderGet(t *testing.T) {
 
 	}
 }
+
+func TestWirelessShareTpwdQuery(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.WirelessShareTpwdQueryRequest{}
+	getRequest.AddParameter("password_content", "(7q8mbttcjzE)")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.WirelessShareTpwdQueryResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.WirelessShareTpwdQueryResponse)
+
+		fmt.Println(result.WirelessShareTpwdQueryResult)
+
+	}
+}
+
+func TestShopcatsListGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.ShopcatsListGetRequest{}
+	getRequest.AddParameter("fields", "cid,parent_cid,name,is_parent")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.ShopcatsListGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.ShopcatsListGetResponse)
+
+		fmt.Println(result.ShopcatsListGetResult.ShopCats)
+
+	}
+}
+
+func TestSellercatsListGet(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, sessionKey)
+
+	//初始化请求接口信息
+	getRequest := &request.SellercatsListGetRequest{}
+	getRequest.AddParameter("nick", "韩都衣舍旗舰店")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.SellercatsListGetResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.SellercatsListGetResponse)
+
+		fmt.Println(result.SellercatsListGetResult.SellerCats)
+
+	}
+}
