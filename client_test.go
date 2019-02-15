@@ -910,3 +910,32 @@ func TestTbkCouponGet(t *testing.T) {
 
 	}
 }
+
+func TestTbkTpwdCreate(t *testing.T) {
+	appKey := os.Getenv("APPKEY")
+	appSecret := os.Getenv("APPSECRET")
+	//sessionKey := os.Getenv("SESSIONKEY")
+	//fmt.Println(sessionKey)
+	//
+	//初始化TopClient
+	client := &TopClient{}
+	client.Init(appKey, appSecret, "")
+
+	//初始化请求接口信息
+	getRequest := &request.TbkTpwdCreateRequest{}
+	getRequest.AddParameter("text", "573509331754")
+	getRequest.AddParameter("url", "https://uland.taobao.com/coupon/edetail?e=mO4IEAPR5NAGQASttHIRqSS40sV7V7nidNcM7bsgMaPuFdGM%2Fy8ADJwJ6dLD4BPh4h5828KZV1siM37WwZ3M460TeAL%2BmcF1hLjdYI0pIJBwx7%2FmoMcv1BemP0hpIIPvjDppvlX%2Bob8NlNJBuapvQ2MDg9t1zp0R8pjV3C9qcwTuCTbQanBq6DXyPsc63NLC&traceId=0b15285b15502249874743900e&union_lens=lensId:0b0175f0_0bb6_168f09c1564_38e3&xId=9qB7wC7cWoDxvRAEWhBT5GywBdnahUokfIoYEnBxjUdmgTwHqmSiABnh5LI6gVcBmjPO7VeGfMM0Cqk2zkVD84&activityId=cd802bbce5554df0a9d0a2b93230ae65")
+
+	//初始化结果类型
+	var getResponse DefaultResponse = &response.TbkTpwdCreateResponse{}
+	//执行请求接口得到结果
+	err := client.Exec(getRequest, getResponse)
+	if err != nil {
+		t.Log(err)
+	} else {
+		result := getResponse.(*response.TbkTpwdCreateResponse)
+
+		fmt.Println(result.Body)
+
+	}
+}
