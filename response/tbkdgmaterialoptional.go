@@ -40,6 +40,10 @@ type TbkDgMaterialOptionalMapDatum struct {
 	CouponShareURL       string                           `json:"coupon_share_url"`
 	CouponRemainCount    int64                            `json:"coupon_remain_count"`
 	CouponTotalCount     int64                            `json:"coupon_total_count"`
+	CouponStartTime      string                           `json:"coupon_start_time"`
+	CouponEndTime        string                           `json:"coupon_end_time"`
+	CouponStartFee       string                           `json:"coupon_start_fee"`
+	CouponAmount         string                           `json:"coupon_amount"`
 	IncludeDxjh          string                           `json:"include_dxjh"`
 	IncludeMkt           string                           `json:"include_mkt"`
 	InfoDxjh             string                           `json:"info_dxjh"`
