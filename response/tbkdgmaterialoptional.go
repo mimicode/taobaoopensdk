@@ -37,6 +37,7 @@ type TbkDgMaterialOptionalMapDatum struct {
 	CommissionType       string                           `json:"commission_type"`
 	CouponID             string                           `json:"coupon_id"`
 	CouponInfo           string                           `json:"coupon_info"`
+	CouponShareURL       string                           `json:"coupon_share_url"`
 	CouponRemainCount    int64                            `json:"coupon_remain_count"`
 	CouponTotalCount     int64                            `json:"coupon_total_count"`
 	IncludeDxjh          string                           `json:"include_dxjh"`
