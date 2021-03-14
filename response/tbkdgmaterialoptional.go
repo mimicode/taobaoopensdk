@@ -51,6 +51,7 @@ type TbkDgMaterialOptionalMapDatum struct {
 	Provcity             string                           `json:"provcity"`
 	ReservePrice         string                           `json:"reserve_price"`
 	SellerID             int64                            `json:"seller_id"`
+	Nick                 string                           `json:"nick"`
 	ShopDsr              int64                            `json:"shop_dsr"`
 	ShopTitle            string                           `json:"shop_title"`
 	ShortTitle           string                           `json:"short_title"`
