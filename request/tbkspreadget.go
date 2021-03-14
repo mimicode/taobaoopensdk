@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.spread.get( 物料传播方式获取 )

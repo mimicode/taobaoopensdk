@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.sc.coupon.brand.recommend( 品牌券API【社交】 )

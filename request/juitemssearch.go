@@ -2,7 +2,6 @@ package request
 
 import (
 	"net/url"
-	
 )
 
 //taobao.ju.items.search( 聚划算商品搜索接口 )
@@ -12,7 +11,7 @@ type JuItemsSearchRequest struct {
 }
 
 func (tk *JuItemsSearchRequest) CheckParameters() {
-	
+
 }
 
 //添加请求参数

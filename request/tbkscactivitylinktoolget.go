@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.sc.activitylink.toolget( 淘宝联盟官方活动推广API-工具 )

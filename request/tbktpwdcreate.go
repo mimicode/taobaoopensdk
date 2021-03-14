@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.tpwd.create( 淘宝客淘口令 )
@@ -13,7 +14,7 @@ type TbkTpwdCreateRequest struct {
 
 func (tk *TbkTpwdCreateRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("text"), "text")
-utils.CheckNotNull(tk.Parameters.Get("url"), "url")
+	utils.CheckNotNull(tk.Parameters.Get("url"), "url")
 
 }
 

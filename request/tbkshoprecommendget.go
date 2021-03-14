@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.shop.recommend.get( 淘宝客店铺关联推荐查询 )
@@ -13,8 +14,8 @@ type TbkShopRecommendGetRequest struct {
 
 func (tk *TbkShopRecommendGetRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("fields"), "fields")
-utils.CheckNotNull(tk.Parameters.Get("user_id"), "user_id")
-utils.CheckNumber(tk.Parameters.Get("user_id"), "user_id")
+	utils.CheckNotNull(tk.Parameters.Get("user_id"), "user_id")
+	utils.CheckNumber(tk.Parameters.Get("user_id"), "user_id")
 
 }
 

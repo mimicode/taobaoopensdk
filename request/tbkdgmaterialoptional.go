@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.dg.material.optional( 通用物料搜索API（导购） )
@@ -13,7 +14,7 @@ type TbkDgMaterialOptionalRequest struct {
 
 func (tk *TbkDgMaterialOptionalRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
+	utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
 
 }
 

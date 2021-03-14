@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.sc.newuser.order.sum( 拉新活动汇总API--社交 )
@@ -13,10 +14,10 @@ type TbkScNewuserOrderSumRequest struct {
 
 func (tk *TbkScNewuserOrderSumRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("activity_id"), "activity_id")
-utils.CheckNotNull(tk.Parameters.Get("page_no"), "page_no")
-utils.CheckNumber(tk.Parameters.Get("page_no"), "page_no")
-utils.CheckNotNull(tk.Parameters.Get("page_size"), "page_size")
-utils.CheckNumber(tk.Parameters.Get("page_size"), "page_size")
+	utils.CheckNotNull(tk.Parameters.Get("page_no"), "page_no")
+	utils.CheckNumber(tk.Parameters.Get("page_no"), "page_no")
+	utils.CheckNotNull(tk.Parameters.Get("page_size"), "page_size")
+	utils.CheckNumber(tk.Parameters.Get("page_size"), "page_size")
 
 }
 

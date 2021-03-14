@@ -3,9 +3,10 @@ package taobaoopensdk
 import (
 	"fmt"
 	"os"
-	"taobaoopensdk/request"
-	"taobaoopensdk/response"
 	"testing"
+
+	"github.com/mimicode/taobaoopensdk/request"
+	"github.com/mimicode/taobaoopensdk/response"
 )
 
 func TestTbkiteminfoget(t *testing.T) {

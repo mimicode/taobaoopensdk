@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.dg.item.coupon.get( 好券清单API【导购】 )
@@ -13,7 +14,7 @@ type TbkDgItemCouponGetRequest struct {
 
 func (tk *TbkDgItemCouponGetRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
+	utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
 
 }
 

@@ -1,8 +1,8 @@
 package request
 
 import (
+	"github.com/mimicode/taobaoopensdk/utils"
 	"net/url"
-	"taobaoopensdk/utils"
 )
 
 //taobao.sellercats.list.get( 获取前台展示的店铺内卖家自定义商品类目 )
