@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.sc.optimus.material( 淘宝客擎天柱通用物料API - 社交 )
@@ -13,9 +14,9 @@ type TbkScOptimusMaterialRequest struct {
 
 func (tk *TbkScOptimusMaterialRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNotNull(tk.Parameters.Get("site_id"), "site_id")
-utils.CheckNumber(tk.Parameters.Get("site_id"), "site_id")
+	utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
+	utils.CheckNotNull(tk.Parameters.Get("site_id"), "site_id")
+	utils.CheckNumber(tk.Parameters.Get("site_id"), "site_id")
 
 }
 

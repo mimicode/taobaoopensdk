@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.uatm.favorites.item.get( 获取淘宝联盟选品库的宝贝信息 )
@@ -13,10 +14,10 @@ type TbkUatmFavoritesItemGetRequest struct {
 
 func (tk *TbkUatmFavoritesItemGetRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("fields"), "fields")
-utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNotNull(tk.Parameters.Get("favorites_id"), "favorites_id")
-utils.CheckNumber(tk.Parameters.Get("favorites_id"), "favorites_id")
+	utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
+	utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
+	utils.CheckNotNull(tk.Parameters.Get("favorites_id"), "favorites_id")
+	utils.CheckNumber(tk.Parameters.Get("favorites_id"), "favorites_id")
 
 }
 

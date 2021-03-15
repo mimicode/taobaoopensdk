@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.ju.tqg.get( 淘抢购api )
@@ -13,10 +14,10 @@ type TbkJuTqgGetRequest struct {
 
 func (tk *TbkJuTqgGetRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("fields"), "fields")
-utils.CheckNotNull(tk.Parameters.Get("start_time"), "start_time")
-utils.CheckNotNull(tk.Parameters.Get("end_time"), "end_time")
-utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
+	utils.CheckNotNull(tk.Parameters.Get("start_time"), "start_time")
+	utils.CheckNotNull(tk.Parameters.Get("end_time"), "end_time")
+	utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
+	utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
 
 }
 

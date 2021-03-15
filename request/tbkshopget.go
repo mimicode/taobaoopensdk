@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.shop.get( 淘宝客店铺查询 )
@@ -13,7 +14,7 @@ type TbkShopGetRequest struct {
 
 func (tk *TbkShopGetRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("fields"), "fields")
-utils.CheckNotNull(tk.Parameters.Get("q"), "q")
+	utils.CheckNotNull(tk.Parameters.Get("q"), "q")
 
 }
 

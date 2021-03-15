@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.activitylink.get( 淘宝联盟官方活动推广API-媒体 )
@@ -13,9 +14,9 @@ type TbkActivitylinkGetRequest struct {
 
 func (tk *TbkActivitylinkGetRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
-utils.CheckNotNull(tk.Parameters.Get("promotion_scene_id"), "promotion_scene_id")
-utils.CheckNumber(tk.Parameters.Get("promotion_scene_id"), "promotion_scene_id")
+	utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
+	utils.CheckNotNull(tk.Parameters.Get("promotion_scene_id"), "promotion_scene_id")
+	utils.CheckNumber(tk.Parameters.Get("promotion_scene_id"), "promotion_scene_id")
 
 }
 

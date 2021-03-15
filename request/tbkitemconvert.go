@@ -2,7 +2,8 @@ package request
 
 import (
 	"net/url"
-	"taobaoopensdk/utils"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 //taobao.tbk.item.convert( 淘宝客商品链接转换 )
@@ -14,7 +15,7 @@ type TbkItemConvertRequest struct {
 func (tk *TbkItemConvertRequest) CheckParameters() {
 	utils.CheckNotNull(tk.Parameters.Get("adzone_id"), "adzone_id")
 	utils.CheckNumber(tk.Parameters.Get("adzone_id"), "adzone_id")
-	
+
 	utils.CheckNotNull(tk.Parameters.Get("fields"), "fields")
 	utils.CheckNotNull(tk.Parameters.Get("num_iids"), "num_iids")
 	utils.CheckMaxListSize(tk.Parameters.Get("num_iids"), 40, "num_iids")

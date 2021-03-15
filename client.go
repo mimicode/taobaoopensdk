@@ -7,8 +7,9 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"taobaoopensdk/utils"
 	"time"
+
+	"github.com/mimicode/taobaoopensdk/utils"
 )
 
 const (
