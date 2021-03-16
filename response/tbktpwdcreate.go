@@ -26,5 +26,6 @@ type TbkTpwdCreateResult struct {
 }
 
 type TbkTpwdCreateData struct {
-	Model string `json:"model"`
+	Model          string `json:"model"`
+	PasswordSimple string `json:"password_simple"`
 }
