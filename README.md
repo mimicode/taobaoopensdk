@@ -1,3 +1,5 @@
+# 停止维护，建议使用 https://github.com/mimicode/tksdk 更全面 支持 拼多多、苏宁、唯品会、京东、淘宝
+
 # TAOBAO OPEN SDK
 
 ## Installation
